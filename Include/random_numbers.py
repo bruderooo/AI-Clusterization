@@ -26,11 +26,12 @@ def choose(list, type):
 
 choose_list = ['circle', 'rhombus', 'funny_sq', 'star']
 
-matrix = geometric_points(500, choose_list[0])
+matrix = geometric_points(5, choose_list[1])
 
 np.savetxt("training_set.txt", matrix.T)
 
+plt.axis(ymin=-1.25, ymax=1.25, xmin=-1.25, xmax=1.25)
 plt.grid(b=True)
-plt.plot(matrix[0], matrix[1], '.r')
+plt.plot(matrix[0], matrix[1], '.g')
 plt.gca().set_aspect('equal', 'box')
 plt.show()
