@@ -1,9 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 import sys
-
-from Include import prepare_data
-from Include import increse, euclidean_distance, make_gif
+from Include import increse, euclidean_distance, make_gif, prepare_data
 
 file_number = 1
 
