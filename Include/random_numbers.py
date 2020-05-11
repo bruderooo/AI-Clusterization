@@ -30,7 +30,7 @@ def choose(list, type):
 
 choose_list = ['circle', 'rhombus', 'funny_sq', 'star', '4circle', 'small_circle']
 
-matrix = geometric_points(100, choose_list[4])
+matrix = geometric_points(300, choose_list[0])
 
 np.savetxt("training_set.txt", matrix.T)
 
