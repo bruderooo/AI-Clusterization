@@ -37,7 +37,7 @@ if "1" == input("Choose data set. '1' - for random points, other for wikamp test
 else:
     prepare_data("../test.txt", "../test_prepared.txt", ",", 5)
     data = np.loadtxt("../test_prepared.txt")
-    clusters = np.random.rand(k, 2) * 16 - 8
+    clusters = np.random.rand(k, 2) * 20 - 10
     axis_for_draw = (-12, 9, -11, 14)
 
 vor = Voronoi(clusters)
@@ -54,7 +54,7 @@ for epoch in range(epochs):
 
     for vector_index, vector in enumerate(data):
         distance = np.asarray(euclidean_distance(vector[0], vector[1], clusters.T[0], clusters.T[1]))
-        sorted_distance = np.sort(distance.copy())
+        sorted_distance = np.sort(distance)
 
         # Index "która grupa"
         i = np.where(distance == sorted_distance[0])[0][0]

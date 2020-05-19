@@ -74,10 +74,8 @@ for epoch in range(epochs):
             # Obliczanie lambdy dla danej iteracji
             lambd = (H / 2.0) * (lambd_min / (H / 2.0)) ** (epoch / epochs)
 
-            value = eta_k * np.exp(-neuron_index / lambd) * (vector - weights.T[i])
-
             if algorithm == "gas":
-                weights.T[i] += value
+                weights.T[i] += eta_k * np.exp(-neuron_index / lambd) * (vector - weights.T[i])
 
             elif algorithm == "kohonen":
                 radius = radius_0 * np.exp(-epoch / epochs)
@@ -85,23 +83,20 @@ for epoch in range(epochs):
 
                 if euclidean_distance(weights.T[i][0], weights.T[i][1],
                                       weights.T[winner_index][0], weights.T[winner_index][1]) <= radius:
-                    weights.T[i] += value
+
+                    weights.T[i] += eta_k * np.exp(-(distance[i] ** 2) / (2 * lambd ** 2)) * (vector - weights.T[i])
                     flags[i] = True
                 else:
                     if not flags[i]:
                         flags[i] = False
 
-        if (vector_index % (M / 2)) == 0:
-            draw(data.T[0], data.T[1], weights[0], weights[1], axis)
+        # if (vector_index % (M / 2)) == 0:
+    draw(data.T[0], data.T[1], weights[0], weights[1], axis)
 
     if algorithm == "kohonen":
         for i, flag in enumerate(flags):
             if not flag:
-                # weights.T[i] = np.random.uniform(axis[0]/2, axis[1]/2, 2)
-                # weights.T[i] = np.array([2, 2])
-
                 weights[0][i] = np.random.uniform(axis[0], axis[1])
                 weights[1][i] = np.random.uniform(axis[2], axis[3])
-
 
 make_gif("./Plots", algorithm)
