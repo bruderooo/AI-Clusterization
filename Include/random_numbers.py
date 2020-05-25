@@ -34,8 +34,9 @@ matrix = geometric_points(300, choose_list[4])
 
 np.savetxt("training_set.txt", matrix.T)
 
-plt.axis(ymin=-0.25, ymax=2.25, xmin=-0.25, xmax=2.25)
+plt.axis(ymin=-0., ymax=2., xmin=-0., xmax=2.)
 plt.grid(b=True)
 plt.plot(matrix[0], matrix[1], '.g')
 plt.gca().set_aspect('equal', 'box')
+plt.savefig(f"data_set.png")
 plt.show()

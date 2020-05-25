@@ -49,7 +49,7 @@ def make_gif(path_to_catalog_with_plots, gif_name):
         frames.append(new_frame)
 
     # Save into a GIF file that loops forever
-    frames[0].save('../gify/' + gif_name + '.gif', format='GIF', save_all=True, duration=1, loop=0, append_images=frames[1:])
+    frames[0].save('../gify/' + gif_name + '.gif', format='GIF', save_all=True, duration=4, loop=0, append_images=frames[1:])
 
 
 def prepare_data(file_to_change, new_file, delimiter, every_n_row):

@@ -37,7 +37,7 @@ if "1" == input("Choose data set. '1' - for random points, other for wikamp test
 else:
     prepare_data("../test.txt", "../test_prepared.txt", ",", 5)
     data = np.loadtxt("../test_prepared.txt")
-    clusters = np.random.rand(k, 2) * 20 - 10
+    clusters = np.random.rand(k, 2) * 12 - 6
     axis_for_draw = (-12, 9, -11, 14)
 
 vor = Voronoi(clusters)
